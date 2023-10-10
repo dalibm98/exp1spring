@@ -11,20 +11,20 @@ pipeline {
         }
         stage ("Clone repo"){
             steps {
-                sh "git clone https://github.com/MaBouz/exp1-spring.git"
+                sh "git clone https://github.com/dalibm98/exp1spring.git"
             }
         }
         stage ("Generate backend image") {
               steps {
                    dir("exp1-spring"){
                       sh "mvn clean install"
-                      sh "docker build -t docexp1-spring ."
+                      sh "docker build -t docexp1spring ."
                   }                
               }
           }
         stage ("Run docker compose") {
             steps {
-                 dir("exp1-spring"){
+                 dir("exp1spring"){
                     sh " docker compose up -d"
                 }                
             }
